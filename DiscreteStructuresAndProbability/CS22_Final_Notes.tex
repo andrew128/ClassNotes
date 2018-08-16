@@ -1,0 +1,203 @@
+\documentclass[twocolumn]{article}
+\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\begin{document}
+\textbf{\underline{CS 22: Third Study Sheet}} \\
+
+\textbf{Lecture 27 (4/9): Big-O}
+\begin{itemize}
+    \item Let f, g: $\mathbb{R} \rightarrow \mathbb{R}$
+    \item f is O(g) if $\exists c \geq 0$ and $x_0$ s.t. $\forall x \geq x_0$, $|f(x)| \leq c*g(x)$
+    \item basically f is O(g) if $|f(x)|\leq c * g(x)$ after some value $x_0$
+\end{itemize}
+
+\textbf{Lecture 27 (4/9): Big-Theta}
+\begin{itemize}
+    \item define $g: \mathbb{R} \rightarrow \mathbb{R}$
+    \item f is $\Theta(g)$ if f is O(g) and g is O(f)
+\end{itemize}
+
+\textbf{Lecture 27 (4/9): Notation}
+\begin{itemize}
+    \item $f=O(g)$ is not true equality, still means $f$ is $O(g)$, or $f \in O(g)$
+\end{itemize}
+
+\textbf{Lecture 27 (4/9): Big-Omega}
+\begin{itemize}
+    \item f is $\Omega(g)$ if g is $O(f)$
+\end{itemize}
+
+\textbf{Lecture 28 (4/11): Basic Orders of Growth}
+\begin{itemize}
+    \item 1, log n, n log n, $n^k$, $k^n$, $n!$, $n^n$
+\end{itemize}
+
+\textbf{Lecture 28 (4/11): Asymptotic Equality}
+\begin{itemize}
+    \item define f(x) and g(x)
+    \item f(x) $\sim$ g(x) (read as f(x) is asymptotically equal to g(x)) if $$lim_{x \rightarrow \inf} \frac{f(x)}{g(x)} = 1$$
+\end{itemize}
+
+\textbf{Lecture 28 (4/11): Stirling Formula}
+\begin{itemize}
+    \item $n! \sim \sqrt{2 \pi n}(\frac{n}{e})^{n}$
+\end{itemize}
+
+\textbf{Lecture 28 (4/11): Discrete Probability}
+\begin{itemize}
+    \item Definition of Discrete Finite probability space: A pair of objects (S, P) where S = finite non-empty set and $p: S \rightarrow \mathbb{R}$
+    \item must also have:
+    \begin{itemize}
+        \item $p(\omega) > 0 \forall \omega \in S$
+        \item $\sum_{\omega \in S} p(\omega) = 1$
+    \end{itemize}
+    \item S is the sample space
+    \item P is the probability distribution function
+    \item $E \subseteq S$, E is an event
+    \item $P(E) = \sum_{\omega \in E} p(\omega)$
+\end{itemize}
+
+\textbf{Lecture 28 (4/11): Uniform Distribution}
+\begin{itemize}
+    \item p is uniform if $p(\omega)$ is the same as $\forall \omega \in S$
+    \item If $|S|=n$ and p is uniform then $p(\omega) = \frac{1}{|S|} = \frac{1}{n}$
+\end{itemize}
+
+\textbf{Lecture 28 (4/13): Probability}
+\begin{itemize}
+    \item Discrete finite probability spaces (S, p) where S is the sample space and p is the probability distribution function
+    \begin{itemize}
+        \item $p: S \rightarrow \mathbb{R}$
+        \item $p(\omega) > 0 \forall \omega \in S$
+        \item $\sum_{\omega \in S}p(\omega) = 1$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 28 (4/13): Event}
+\begin{itemize}
+    \item an event is a subset of the sample space $E \subseteq S$: 
+    $$p(E) = \sum_{\omega \in E} p(\omega)$$
+    \item uniform: $p(\omega) = \frac{1}{|S|}$, then $p(E) = \frac{|E|}{|S|}$
+    \item prob of flipping k heads in n tosses of a fair coin $=\frac{{n \choose k}}{2^n}$
+\end{itemize}
+
+\textbf{Lecture 28 (4/13): Abstract Probability Space}
+\begin{itemize}
+    \item definition: (S, p), two events A, B $\subseteq S$, B is non-empty
+    \item then, the probability of A given B is: 
+    $$p(A | B) = \frac{p(A\cap B)}{p(B)}$$
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Probability}
+\begin{itemize}
+    \item given events A and B such that p(B) $\neq 0$
+    \item Disjoint: if $p(A|B)=0$, A and B are disjoint events; events cannot happen simultaneously
+    \item Independent: if $p(A|B)=p(A)$. A and B are independent; the occurrence of one does not change the probability of the other occurring
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Independent}
+\begin{itemize}
+    \item A and B are independent if $p(A \cap B) = p(A)p(B)$
+    \item if $B \neq \emptyset$, then:
+    $$P(A | B) = \frac{p(A)p(B)}{p(B)}=p(A)$$
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Mutually Independent}
+\begin{itemize}
+    \item Events $A_1, A_2, ..., A_n$ are mutually independent if $$\forall S\subseteq \{ 1, 2, ..., n\}, p(\cap_{i \in S A_i})=\Pi_{i \in S}p(A_i)$$
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Bayes' Rule}
+\begin{itemize}
+    \item $p(A|B) = \frac{p(A\cap B)}{p(B)}$ and $p(B|A) = \frac{p(A\cap B)}{p(A)}$
+    \item using above formulas and substitution to get Bayes' Formula:
+    $$p(A | B) = \frac{p(B|A)p(A)}{p(B)}$$
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Theorem of Complete Probability (Total Probability Theorem)}
+\begin{itemize}
+    \item given a sample space S and a probability distribution function p: (S, p)
+    \item $S = X_1 \cup X_2 \cup ... \cup X_n$ s.t. $X_i \cap X_j = \emptyset$
+    \item then, for $E \subseteq S$:
+    $$p(E) = \sum_{i=1}^n p(E | X_i)*p(X_i)$$
+\end{itemize}
+
+\textbf{Lecture 29 (4/16): Theorem of Complete Probability Proof}
+\begin{itemize}
+    \item $$p(E) = p((E \cap X_1)\cup...\cup (E \cap X_1))$$
+    $$= p(E\cup X_1)+...+p(E \cup X_n)$$
+    $$= \sum_{i=1}^n p(E | X_i)p(X_i)$$
+    \item uses Bayes' Rule for last step
+\end{itemize}
+
+\textbf{Lecture 30 (4/18): Random Variables}
+\begin{itemize}
+    \item random variable for (S, p) is any function $X: A \rightarrow \mathbb{R}$
+    \item Special Case: Binomial Random Variable with $n=1$, $X=\# \text{ heads}$: X=1 with prob p, X=0 with prob q
+    \item $p(X=k)={n \choose k}p^kq^{n-k}$
+\end{itemize}
+
+\textbf{Lecture 30 (4/18): Expected Value}
+\begin{itemize}
+    \item Definition: The Expectation of X is:
+    $$E[X] = \sum_{x \in S}p(\omega)X(\omega)$$
+    \item Expectation of Binomial Random Variable:
+    $$E[Y_1+Y_2+...+Y_n]=E[Y_1]+...+E[Y_n]$$
+\end{itemize}
+
+\textbf{Lecture 31 (4/20): Linearity of Expectation}
+\begin{itemize}
+    \item 
+    $$E[Y_1+Y_2+...+Y_n]=E[Y_1]+...+E[Y_n]$$
+    \item 
+    $E[\alpha X]=\alpha E[X]$
+    \item Binomial Random variable:
+    \begin{itemize}
+        \item $X = X_1+...+X_n$
+        \item $E[X_i] = 1 * p$, so $E[X] = \sum_{i=1}^n E[X_i]= n*p$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 31 (4/20): Variance}
+\begin{itemize}
+    \item variance of X, V(X) is:
+    $$V(X)=\sum_{\omega \in S} p(\omega)(X(\omega)-E[X])^2$$
+    \item $E[X]$ is a constant: $\alpha = E[X]$
+    $$=E[X^2]-E[X]^2$$
+    \item V(X) is an expected value itself
+    \item Standard deviation: $\sqrt{V(X)}$
+\end{itemize}
+
+\textbf{Lecture 32 (4/23): Variance, Expected Value, Independence}
+\begin{itemize}
+    \item X and Y (two random variables) are independent if $p(X=a \text{ and } Y=b)=p(X=a)p(Y=b)$
+    \item if X and Y are independent, then:
+    \begin{itemize}
+        \item $E[XY]=E[X]E[Y]$
+        \item $V(X+Y)=V(X)+V(Y)$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 33 (4/25): Markov's Bounds}
+\begin{itemize}
+    \item X is a non-negative random variable, $a$ is a constant
+    \item $P(X \geq a) \leq \frac{E[X]}{a}$
+    \item PROOF
+\end{itemize}
+
+\textbf{Lecture 33 (4/25): Chebychev's Bounds}
+\begin{itemize}
+    \item for any random variable X and constant a:
+    \item $P(|X-E[X]\geq a|) \leq \frac{V(X)}{a^2}$
+    \item PROOF
+\end{itemize}
+
+\textbf{Lecture 33 (4/25): Weak Law of Large Numbers}
+\begin{itemize}
+    \item Let $X_1, X_2, ..., X_n$ be mutually independent and identical random variables
+    \item $$\text{lim}_{n \rightarrow \infty}P(|\frac{X_1+...+X_n}{n}-E[X_i]|\geq c)=0$$
+\end{itemize}
+\end{document}

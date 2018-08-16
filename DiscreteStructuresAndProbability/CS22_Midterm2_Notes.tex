@@ -1,0 +1,388 @@
+\documentclass[twocolumn]{article}
+\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\begin{document}
+\textbf{\underline{CS 22: Midterm 2 Study Sheet}} \\
+
+\textbf{Lecture 12 (2/23): Fundamental Theorem of Arithmetic}
+\begin{itemize}
+    \item Every $x \in \mathbb{Z}$, $x>1$ can be written as a product of prime numbers
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 12 (2/23): Divisibility}
+\begin{itemize}
+    \item $a|b$ over $\mathbb{Z}$ if $\exists c \in \mathbb{Z}$ s.t. $ac = b$ 
+    \item $a|b$ is read as a divides b
+\end{itemize}
+
+\textbf{Lecture 12 (2/23): Primes}
+\begin{itemize}
+    \item Theorem: there are infinitely many primes
+    \item Proof: COME BACK TO
+    \item Theorem: Let p(n) = number of primes $<$ n, then $\textbf{lim}_{n\rightarrow \inf}p(n) = \frac{n}{\ln{n}}$
+    \item Goldback Conjecture: Every even integer $>2$ is the sum of two primes
+\end{itemize}
+
+\textbf{Lecture 13 (2/26): Division Algorithm}
+\begin{itemize}
+    \item given $a \in \mathbb{Z}$ and $d \in \mathbb{Z}^+$, $\exists$ unique $q, r \in \mathbb{Z}$ s.t. $a=dq+r$ where $0 \leq r < d$
+\end{itemize}
+
+\textbf{Lecture 13 (2/26): Euclidean Algorithm}
+\begin{itemize}
+    \item the Euclidean algorithm calculates the greatest common divisor of a and b
+    \item gcd is a loop invariant: gcd(a,b) = gcd(b, rem(a, b)) where $a, b \in \mathbb{Z}^+$
+    \item input: (a,b) where $a, b \in \mathbb{Z}^+$
+    $$a = bq_0 + r_0, 0 \leq r_0 < b$$
+    $$b = r_0q_1+r_1, 0 \leq r_1 < r_0$$
+    $$r_0 = r_1q_2 + r_2, 0 \leq r_2 < r_1$$
+    \item let s be the smallest integer such that $r_s = 0$
+    \begin{itemize}
+        \item if s=0 then gcd(a, b) = b
+        \item if $s \neq 0$ then gcd(a, b) = $r_{s-1}$
+    \end{itemize}
+    \item example: gcd(480, 105) = 15
+    $$480 = 105*4+60$$
+    $$105 = 60*1 + 45$$
+    $$60 = 45*1 + 15$$
+    $$45 = 15*2$$
+\end{itemize}
+
+\textbf{Lecture 13 (2/26): Euclidean Algorithm Proof of correctness}
+\begin{itemize}
+    \item involves loop invariant
+\end{itemize}
+
+\textbf{Lecture 13 (2/26): Linear Combinations}
+\begin{itemize}
+    \item Theorem: $\forall a, b \in \mathbb{Z}^+, \exists u, v \in \mathbb{Z}$ s.t. gcd(a, b) = a*u+b*v
+    \item can find u and v through backtrack euclidean algorithm
+    \item gcd(5, 17) = 1, 1 = 5*7 - 17*2
+    \item basically express numbers in last equation that is equal to 1 to be in terms of previous steps until represent 1 fully in terms of a and b
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 14 (2/28): Modular Arithmetic}
+\begin{itemize}
+    \item let $a, b \in \mathbb{Z}$ and $m \in \mathbb{Z}^+$
+    \item define R on $\mathbb{Z}$ where aRb if $m|(a-b)$
+    \item aRb can be rewritten as $a \equiv b$ (mod m), an equivalence relation
+    \item mod function: xMODm gives the remainder of x divided by m
+\end{itemize}
+
+\textbf{Lecture 14 (3/2): Modular Properties}
+\begin{itemize}
+    \item mod properties: if $a \equiv b$ (mod m) and $c \equiv d$ (mod m), then:
+    \begin{itemize}
+        \item $a+c \equiv b+d$ (mod m)
+        \item $ac \equiv bd$ (mod m)
+        \item $a^n \equiv b^n$ (mod m)
+        \item $a+f \equiv b+f$ (mod m)
+        \item $af \equiv bf$ (mod m)
+        \item $a-f \equiv b-f$ (mod m)
+    \end{itemize}
+    \item can't always cancel
+\end{itemize}
+
+\textbf{Lecture 14 (3/2): Solution Exists to Modular Congruence}
+\begin{itemize}
+    \item $ax \equiv b$ (mod m) has a solution iff gcd(a, m)$|$b
+    \item Proof: COME BACK TO
+    \item Special case: $ax\equiv 1$ (mod m) has a solution iff gcd(a, m) = 1
+\end{itemize}
+
+\textbf{Lecture 14 (3/2): Multiplicative Inverse}
+\begin{itemize}
+    \item let gcd(a, m) = 1
+    \item if $ax \equiv ya$ (mod m), then $x \equiv y$ (mod m); can be shown by multiplying both sides by the multiplicative inverse of a
+    \item gcd(a, m) = 1, $\exists z$ s.t. $az \equiv 1$ (mod m)
+    \item z is the multiplicative inverse of a
+\end{itemize}
+
+\textbf{Lecture 14 (3/2): Fermat's Little Theorem}
+\begin{itemize}
+    \item Let p be prime, if gcd(a, p) = 1, then $$a^{p-1} \equiv 1 \text{(mod p)}$$
+    \item given that $ax \equiv 1$ ( mod p), $x = a^{p-2}$
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 15 (3/5): Euler's Totient (Phi) Function}
+\begin{itemize}
+    \item COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 15 (3/5): Phi function}
+\begin{itemize}
+    \item for p, q prime $p \neq q$, $\phi(p*q) = (p-1)*(q-1)$
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 15 (3/5): Euler-Fermat}
+\begin{itemize}
+    \item if for a, m, gcd(a, m) = 1, then $a^{\phi(m)}\equiv 1$ (mod m).
+\end{itemize}
+
+\textbf{Lecture 16 (3/7): Public Key Cryptosystem}
+\begin{itemize}
+    \item Steps:
+    \begin{enumerate}
+        \item p, q: choose 2 primes p and q; n = pq
+        \item $\phi(n):$ calculate $\phi(n)=(p-1)(q-1)$
+        \item k: choose a k such that $1<k<\phi(n)$ and $gcd(k, \phi(n))=1$
+        \item d: find a d such that $kd \equiv 1 (\text{mod}\phi(n))$
+        \item public: n (the modulus) and k (the encryption exponent)
+        \item private: d
+    \end{enumerate}
+    \item Encryption: to encrypt message m, compute $r = m^k \text{ (mod n)}$
+    \item Decryption: to decrypt message r calculate $x = r^d \text{ (mod n)}$
+    \item Proof of RSA: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 17 (3/9): Notation}
+\begin{itemize}
+    \item $\lnot$ means not
+    \item $\wedge$ means and
+    \item $\vee$ means or
+    \item $\oplus$ means xor (or but not both of)
+    \item $\implies$ means implies
+    \item $\iff$ means if and only if (p implies q and q implies p)
+    \item
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            p & q & $p \implies q$ & $p \iff q$ \\
+            \hline
+            T & T & T & T\\ 
+            T & F & F & F\\ 
+            F & T & T & F\\ 
+            F & F & T & T\\ 
+            \hline
+        \end{tabular}
+    \item $q \implies p$ is the converse of $p \implies q$
+    \item $\lnot p \implies \lnot q$ is the inverse of $p \implies q$
+    \item $\lnot q \implies \lnot p$ is the contrapositive (logically equivalent) of $p \implies q$
+    \item tautology: proposition that is always true $p \vee \lnot p$
+    \item contradiction: proposition that is always false $p \wedge \lnot p$
+\end{itemize}
+
+\textbf{Lecture 18 (3/12): Proof by Contradiction}
+\begin{itemize}
+    \item Want to show that predicate p is true
+    \item find contradiction q such that $\lnot p \implies q$ is true
+    \item the above implies that $\lnot p$ is false, so p must be true
+    \item If p then q; assume that q is not true and show that if q is not true then p is not true (contrapositive)
+\end{itemize}
+
+\textbf{Lecture 18 (3/12): Normal Forms}
+\begin{itemize}
+    \item disjunctive form: OR of ANDS
+    \item conjunctive form: AND of ORS
+    \item SAT: question of whether or not there exists an assignment to the variables which satisfy the expression (boolean satisfiability problem)
+    \item 3-SAT: special case of SAT problem where the boolean expression should be divided into clauses (expressions in parentheses) where each clause contains 3 literals
+\end{itemize}
+
+\textbf{Lecture 18 (3/12): Boolean Algebra}
+\begin{itemize}
+    \item same as propositional logic except instead of T and F, use 1's and 0's
+    \item boolean function: $f: \{ 0, 1\}^n \rightarrow \{ 0, 1\}$
+    \item operations:
+    \begin{itemize}
+        \item addition is OR
+        \item multiplication is AND
+        \item inverse is NOT
+    \end{itemize}
+    \item Identities:
+    \begin{itemize}
+        \item x+x = x
+        \item x*x = x
+        \item x+1 = 1
+        \item x+0 = x
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 19 (3/14): Combinatorial Circuits}
+\begin{itemize}
+    \item AND, OR, NOT, XOR gates
+    \item combinatorial circuits: combining multiple gates
+\end{itemize}
+
+\textbf{Lecture 19 (3/14): Binary Representation}
+\begin{itemize}
+    \item $\forall n \in \mathbb{Z}_{\geq 0}\exists$ an expression of the form $n=a_k*2^k+a_{k-1}**2^{k-1}+...+a_1*2^1+a_0*2^0$ where $a_i \in \{0, 1\}\forall i$
+    \item example: $1011 = 1*2^3+0*2^2+1*2^1+1*2^0$
+\end{itemize}
+
+\textbf{Lecture 19 (3/14): Half Adder}
+\begin{itemize}
+    \item adding two bits requires sum and carry bits
+    \item 
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            x & y & S & C \\
+            \hline
+            1 & 1 & 0 & 1\\ 
+            1 & 0 & 1 & 0\\ 
+            0 & 1 & 1 & 0\\ 
+            0 & 0 & 0 & 0\\ 
+            \hline
+        \end{tabular}
+    \item S = $x \oplus y$; $C = x\wedge y$
+\end{itemize}
+
+\textbf{Lecture 20 (3/16): Full Adder}
+\begin{itemize}
+    \item full adder: basically just adding an extra thing to add (to account for previous column carrying in numbers)
+    \item composed of two half adders
+    \item
+        \begin{tabular}{ |c|c|c|c|c|c| }
+            \hline
+            x & y & $C_{in}$ & S & $C_{out}$ \\
+            \hline
+            1 & 1 & 1 & 1 & 1\\ 
+            1 & 1 & 0 & 0 & 1\\ 
+            1 & 0 & 1 & 0 & 1\\ 
+            1 & 0 & 0 & 1 & 0\\ 
+            0 & 1 & 1 & 0 & 1\\ 
+            0 & 1 & 0 & 1 & 0\\ 
+            0 & 0 & 1 & 1 & 0\\ 
+            0 & 0 & 0 & 0 & 0\\ 
+            \hline
+        \end{tabular}
+\end{itemize}
+
+\textbf{Lecture 20 (3/16): Ripple Adder}
+\begin{itemize}
+    \item full adder only adds one column in the binary addition of two numbers
+    \item in order to add multi-bit binary numbers, use ripple adder
+    \item ripple adder is a group of full adders ending with a half adder (half adder because first addition has no carry in)
+    \item ripple adder uses previous adder's carry bit as it's input
+\end{itemize}
+
+\textbf{Lecture 20 (3/16): Feedback Circuit}
+\begin{itemize}
+    \item takes output of circuit and runs it back as input
+    \item theta in class notes diagram represents output
+\end{itemize}
+
+\textbf{Lecture 21 (3/19): SR Latch}
+\begin{itemize}
+    \item allows us to either store
+and hold Q or change its value by flipping an input
+\end{itemize}
+
+\textbf{Lecture 21 (3/19): Clock and D Latch}
+\begin{itemize}
+    \item clock signal indicates when the latch should open, read the value of D, and store it
+    \item D = data
+    \item C= 0 means “latch closed”
+    \item C = 1 means value of Q becomes value of D
+\end{itemize}
+
+\textbf{Lecture 22 (3/21): Flip Flop Circuit}
+
+\textbf{Lecture 22 (3/21): 2 Bit Counter}
+
+\textbf{Lecture 23 (3/23): Produce Rule}
+\begin{itemize}
+    \item Product rule: Let S be a set of length-k sequences; $|S|=n_1*n_2*...*n_k$ COME BACK TO
+    \item Proof of product rule (easy induction): COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 23 (3/23): Counting functions}
+\begin{itemize}
+    \item $|X|=n, |Y|=m$
+    \item number of functions $f:X \rightarrow Y$ is $m^n$
+    \item number of functions $f:X\rightarrow Y$ that are injective (one-to-one) is $m(m-1)...(m-n-1)$; application of product rule to number of elements in co domain
+    \item hard to count number of surjective (onto) functions
+    \item number of bijective functions is the same as the number of injective functions
+    \item Proposition: if $|X|=|Y|$ and $f:X\rightarrow Y$ is injective, then f is surjective
+    \item basically if number of bijections is the number of injections if the size of the sets is the same (IS THIS IFF?)
+\end{itemize}
+
+\textbf{Lecture 23 (3/23): Factorial}
+\begin{itemize}
+    \item definition of n factorial:
+    for $n \i \mathbb{Z}$, $n\geq 1$:
+    $n! = n(n-1)...(1)$
+    \item define $0!=1$ 
+\end{itemize}
+
+\textbf{Lecture 23 (3/23): Permutations}
+\begin{itemize}
+    \item a permutation of a set S is a sequence that contains every element of S exactly once (if n elements, n! possible permutations)
+    \item given $f: X \rightarrow X$, if f is a bijection, then it is called a permutation; (if $|X|=n$, then the number of permutations of X is $n!$)
+\end{itemize}
+
+\textbf{Lecture 23 (3/23): Combinations}
+\begin{itemize}
+    \item for $n \geq k \geq 0 \in \mathbb{Z}$:
+     $${n \choose k} = \frac{n!}{(n-k)!(k)!}$$
+    \item ${n \choose k}$ is the number of ways to select k objects from an n element set; also equal to number of subsets of size k of an n-element set
+    \item number of subsets of n-element sets = $2^n$ (either in set or not)
+\end{itemize}
+
+\textbf{Lecture 24 (4/2): Binomial Coefficients}
+\begin{itemize}
+    \item binomial coefficients are the coefficients of the binomial expansion of $(x+y)^n$
+\end{itemize}
+
+\textbf{Lecture 24 (4/2): Binomial Theorem}
+\begin{itemize}
+    \item $$(x+y)^n = \sum_{k=0}^n {n \choose k}x^k y^{n-k}$$
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 24 (4/2): Binomial Coefficient Identities}
+\begin{itemize}
+    \item ${n \choose k} = {n \choose n-k}$
+    \item $2^n = \sum_{k=0}^n {n \choose k}$
+    \item ${n \choose k} = {n-1 \choose k}+{n-1 \choose k-1}$
+    \item Proof for above: number of ways to take k elements not including 1 fixed element plus number of ways to take k-1 elements from n-1 because already took 1
+\end{itemize}
+
+\textbf{Lecture 24 (4/2): Pascal's Triangle}
+\begin{itemize}
+    \item can be represented as binomial coefficients are as integers
+    \item CHECK DIAGRAM FOR DRAWING
+\end{itemize}
+
+\textbf{Lecture 24 (4/2): Count Sizes of Unions}
+\begin{itemize}
+    \item size 2: $|X \cup Y| = |X| + |Y| - |Y\cap X|$
+    \item size 3: $|X_1 \cup X_2 \cup X_3| = |X_1|+|X_2|+|X_3|-|X_1 \cap X_2|-|X_2 \cap X_3|-|X_1 \cap X_3|+|X_1 \cap X_2 \cap X_3|$
+\end{itemize}
+
+\textbf{Lecture 25 (4/4): Inclusion/Exclusion}
+\begin{itemize}
+    \item $$|X_1 \cup ... \cup X_n| = \sum|X_i|-\sum_{i<j}|X_i \cap X_j|+\sum_{i<j<k}|X_i \cap X_j \cap X_k|+...+(-1)^{n-1} |X_1 \cap ... \cap X_n|$$
+    \item Proof: COME BACK TO
+\end{itemize}
+
+\textbf{Lecture 25 (4/4): Derangements}
+\begin{itemize}
+    \item definition: derangements are permutations with no fixed points (permutation of the elements of a set such that no element appears in its original position)
+    \item let $F_i$ be the set of bijections from $X \rightarrow X$ that fix element $i \in X$
+    \item let $D_n$ represent the set of derangements of a string of length n: know that the derangements of a string are all the permutations excluding any permutation that has one or more fixed elements:
+    $$|D_n| = n! - |F_1 \cup F_2 \cup ... \cup F_n|$$
+    \item to count derangements look at PAPER ATTACHED
+\end{itemize}
+
+\textbf{Lecture 26 (4/6): Pigeonhole Principle}
+\begin{itemize}
+    \item if place $m$ objects into $k$ groups, then some group has at least %$\ceil[\big]{\frac{m}{k}}$
+    $\ceil{\frac{m}{k}}$ objects
+    \item define set A and B, if $|A| > |B|$, then for every total function $f: A \rightarrow B$, there exist 2 different elements of A that are mapped by f to the same element of B
+    \item Generalized Pigeonhole Principle: If $|A| > k * |B|$, then every total function $f: A \rightarrow B$ maps at least $k+1$ different elements of A to the same element of B
+\end{itemize}
+
+\textbf{Lecture 26 (4/6): Strong Pigeonhole Principle}
+\begin{itemize}
+    \item Let $m_1, ..., m_n$ be positive integers
+    \item if we place $m_1 +...+m_n -n +1$ objects into n boxes, then either box 1 contains at least $m_1$ objects or box 2 contains at least $m_2$ objects, ..., or box n contains at least $m_n$ objects
+    \item Proof: COME BACK TO
+\end{itemize}
+\end{document}
+

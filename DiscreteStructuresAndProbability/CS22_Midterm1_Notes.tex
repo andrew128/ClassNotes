@@ -1,0 +1,121 @@
+\documentclass[twocolumn]{article}
+\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\textbf{\underline{CS 22: Midterm 1 Study Sheet}} \\
+
+\textbf{Lecture 2 (1/26): Definitions}
+\begin{itemize}
+    \item proposition: a statement that is either true or false (i.e. $2+3 = 5$)
+    \item predicate: a proposition whose truth value depends on a variable (i.e. n is a perfect square)
+\end{itemize}
+
+\textbf{Lecture 2 (1/26): Proof by Contradiction}
+\begin{itemize}
+    \item In order to prove a proposition P by contradiction
+    \item 1. state "We use proof by contradiction."
+    \item 2. write "suppose P is false"
+    \item 3. deduce something know to be false (a logical contradiction)
+    \item 4. write "This is a contradiction, therefore P must be true"
+    \item alternate form: If p then q; assume that q is not true and show that if q is not true then p is not true (contrapositive)
+\end{itemize}
+
+\textbf{Lecture 3 (1/29): Number Systems}
+\begin{itemize}
+    \item $\mathbb{Z}$ Integers
+    \item $\mathbb{Q}$ Rationals: any number that can be expressed as a fraction of two integers
+    \item $\mathbb{R}$ Reals
+\end{itemize}
+
+\textbf{Lecture 4 (1/31): Set Equality}
+\begin{itemize}
+    \item Set equality: For two sets A and B, A=B if and only if $A \subseteq B$ and $B \subseteq A$
+    \item Proving set equality by subset containment in this way is called the set element method
+\end{itemize}
+
+\textbf{Lecture 5 (2/2): Cartesian Product}
+\begin{itemize}
+    \item Let A, B be sets. Define $A \times B = \{ (a,b) | a \in A \text{ and } b \in B\}$ where $(a, b)$ is an ordered pair.
+\end{itemize}
+
+\textbf{Lecture 5 (2/2): Relations}
+\begin{itemize}
+    \item A relation R on $A \times B$ is any subset of $A \times B$, $R \subseteq A \times B$ 
+    \item A relation $R \subseteq A \times A$ is called a "relation on A"
+    \item ways to denote a pair (a, b) is in relation R: $(a, b) \in R$ or $aRb$
+\end{itemize}
+
+\textbf{Lecture 5 (2/2): Properties of Relations}
+\begin{itemize}
+    \item Let R be a relation on A
+    \begin{itemize}
+        \item Reflexive: R is called Reflexive if $\forall a \in A, (a, a) \in R$
+        \item Symmetric: R is called symmetric if $\forall a, b \in A, (a, b) \in R \implies (b, a) \in R$
+        \item Transitive: R is called transitive $\forall a, b, c \in A$ if $(a, b) \in R$ and $(b, c) \in R \implies (a,c) \in R$
+        \item Equivalence Relation: a relation that is reflexive, symmetric and transitive.
+        \item Partial Order: a relation R is a partial order on a set S if and only if it is reflexive, antisymmetric, and transitive.
+        \item Antisymmetry: if $(x, y) \in R$ and $(y, x) \in R$, then $x=y$.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 6 (2/5): Equivalence Classes}
+\begin{itemize}
+    \item Define R to be an equivalence relation on A $(R \subseteq A \times A)$, then $[a]_R = \{ x \in A | (x, a) \in R\}$
+    \item $[a]_R$ is the equivalence class of a
+    \item because R is an equivalence relation and by symmetry, it is implied that $[a]_R = \{ x \in A | (a, x) \in R\}$
+\end{itemize}
+
+\textbf{Lecture 6 (2/5): Partitions}
+\begin{itemize}
+    \item A partition of a set A is a collection of disjoint subsets of A that cover A. So $P = B_1B_2...B_n$ where $B_i\subseteq A$
+    \begin{itemize}
+        \item $\forall a \in A, a \in B$ for some i
+        \item $\forall i, jB_i \cap B_j = \emptyset$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Lecture 7 (2/9): Functions}
+\begin{itemize}
+    \item given $f: A \rightarrow B$, A is known as the domain of the function, B is known co-domain of the function
+    \item image/range = $
+    \{ b \in B | \exists a \in A \text{ s.t. } f(a) = b\}$
+    \item $\forall a \in A \exists$ exactly one pair (a, b) in the relation where $b \in B$ (vertical line test)
+\end{itemize}
+
+\textbf{Lecture 7 (2/9): Injectivity, Surjectivity, Bijectivity}
+\begin{itemize}
+    \item Surjectivity: f is surjective (onto) if $\forall b \in B \exists a \in A \text{ s.t. } f(a) = b$
+    \item Injectivity: f is injective (one-to-one) if $\forall b \in B \exists$ at most one $a \in A \text{ s.t. f(a) = b}$
+    \item Bijectivity: f is bijectivte if it is both injective and surjective
+    \item Define f to be a bijective function $f: A \rightarrow B$
+    \item f is injective $\implies$ $|B| \geq |A|$
+    \item f is surjective $\implies$ $|B| \leq |A|$
+    \item f is bijective $\implies$ $|B| = |A|$
+\end{itemize}
+
+\textbf{Lecture 9 (2/14): Bijections between infinite sets}
+\begin{itemize}
+    \item Two sets A, B have the same cardinality if $\exists$ a bijection $f: A \rightarrow B$.
+\end{itemize}
+
+\textbf{Lecture 10 (2/16): Induction}
+\begin{itemize}
+    \item prove propositions p(n) are true $\forall n \geq b$ $b, n \in \mathbb{Z}$
+    \item base case: $p(b)$
+    \item inductive step: $p(k) \implies p(k+1)$
+    \item ordinary induction:
+    \item 1. state that the proof uses induction
+    \item 2. define an appropriate predicate
+    \item 3. prove that P(0), the base case, is true
+    \item 4. prove that P(n) implies P(n+1) for every non-negative integer n
+    \item 5. invoke induction
+\end{itemize}
+
+\textbf{Lecture 11:(2/21)}
+\begin{itemize}
+    \item Strong induction: Let P be a predicate on non-negative integers
+    \item if P(0) is true and $\forall n \in \mathbb{N}$, P(0), P(1), ...,P(n) together imply P(n+1), then P(m) is true for all $m \in \mathbb{N}$
+\end{itemize}
+\end{document}  
